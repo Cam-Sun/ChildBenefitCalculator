@@ -11,7 +11,20 @@ class ChildBenefitSpec extends AnyWordSpec with Matchers {
         val result = ChildBenefit.isChildEligible(child)        
         val expectedResult = true        
         result shouldBe expectedResult      
-      }    
+      }
+
+      "isChildEligible" should {
+        "return true" when {
+          "child is younger than 20 and is in approved education" in {
+            val child = ChildInFamily(age = 19, inEducation = true, isDisabled = false)
+            val result = ChildBenefit.isChildEligible(child)
+            val expectResult = true
+            result shouldBe expectResult
+          }
+
+        }
+      }
+
     }  
   }
 }
